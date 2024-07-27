@@ -22,6 +22,7 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
+        buildConfigField("String", "BASE_URL", "\"https://swapi.dev/api/\"")
     }
 
     buildTypes {
@@ -44,10 +45,13 @@ android {
 
     buildFeatures {
         compose = true
+        buildConfig = true
     }
+
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.1"
     }
+
     packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
@@ -56,11 +60,18 @@ android {
 }
 
 dependencies {
-    /* Di: Hilt */
-    implementation(libs.hilt.android)
+    /* Di:Hilt */
+    implementation(libs.hilt)
     ksp(libs.hilt.compiler)
-    /* Di: Retrofit */
+    /* Di:Hilt Navigation Compose */
+    implementation(libs.hilt.navigation.compose)
+    /* Net:Retrofit */
     implementation(libs.retrofit)
+    /* Net:Kotlinx Serialization and Converter */
+    implementation(libs.kotlinx.serialization)
+    implementation(libs.serialization.converter)
+    /* Net:OkHttp*/
+    implementation(libs.okHttp)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
