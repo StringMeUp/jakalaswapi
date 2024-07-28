@@ -65,6 +65,8 @@ dependencies {
     ksp(libs.hilt.compiler)
     /* Di:Hilt Navigation Compose */
     implementation(libs.hilt.navigation.compose)
+    /* Navigation Compose */
+    implementation(libs.navigation.compose)
     /* Net:Retrofit */
     implementation(libs.retrofit)
     /* Net:Kotlinx Serialization and Converter */

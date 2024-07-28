@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">jakala-swapi</string>
+    <!--Navigation-->
+    <string name="bottom_nav_main">Main Destination</string>
+    <string name="bottom_nav_movie">Movies</string>
+    <string name="bottom_nav_movie_detail">Movie Detail</string>
+    <string name="bottom_nav_people">People</string>
+    <string name="bottom_nav_people_detail">People Detail\n</string>
+    <string name="bottom_nav_planets">Planets\n</string>
+    <string name="bottom_nav_planets_detail">Planets Detail</string>
+    <!--Other-->
+    <string name="header_item_title">Hello, these are your movies.</string>
 </resources>
