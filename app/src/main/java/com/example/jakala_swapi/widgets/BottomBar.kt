@@ -6,7 +6,6 @@ import androidx.compose.animation.slideOutVertically
 import androidx.compose.foundation.Image
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
-import androidx.compose.material3.NavigationBarItemDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
@@ -32,7 +31,7 @@ fun BottomBar(
         exit = slideOutVertically(targetOffsetY = { it }),
         content = {
             val screens = NavigationItem.BottomNav.bottomNavDestinations()
-            NavigationBar(containerColor = Color.White) {
+            NavigationBar(containerColor = Color.Yellow) {
                 val backStackEntry = navController.currentBackStackEntryAsState()
                 val currentRoute = backStackEntry.value?.destination?.route
                 screens.forEach { screen ->
@@ -51,10 +50,6 @@ fun BottomBar(
                             val iconId = if (selected) (screen.selectedIcon) else screen.icon
                             Image(
                                 painterResource(id = iconId),
-//                                bitmap = rememberIconBitmapImage(
-//                                    vectorResId = iconId,
-//                                    iconSize = 24.dp
-//                                )!!,
                                 contentDescription = "${screen.name}",
                             )
                         },
@@ -67,11 +62,7 @@ fun BottomBar(
                             )
                         },
                         alwaysShowLabel = true,
-                        selected = selected,
-                        colors = NavigationBarItemDefaults
-                            .colors(
-//                                indicatorColor = colorResource(id = de.weloveapps.wanderwege.core.ui.R.color.app_blue_25)
-                            )
+                        selected = selected
                     )
                 }
             }
