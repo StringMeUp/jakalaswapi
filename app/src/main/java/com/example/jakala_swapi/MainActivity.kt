@@ -6,9 +6,13 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -23,11 +27,35 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             JakalaswapiTheme {
+                val viewModel: MainViewModel = hiltViewModel()
+                val uiState by viewModel.uiState.collectAsState()
+
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
+                    when (val s = uiState) {
+                        MainViewModel.MoviesUiState.Error -> {
+                            Text(text = "Error")
+                        }
+                        MainViewModel.MoviesUiState.Loading -> {
+                            Text(text = "Loading")
+                        }
+                        is MainViewModel.MoviesUiState.Success -> {
+                            LazyColumn {
+                                item {
+                                    Greeting(
+                                        name = "These are your movies",
+                                        modifier = Modifier.padding(innerPadding)
+                                    )
+                                }
+
+                                items(s.movies){
+                                    Text(text = it.title)
+                                    Text(text = it.director)
+                                    Text(text = it.producer)
+                                }
+                            }
+                        }
+                    }
+
                 }
             }
         }
@@ -35,7 +63,7 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier, viewModel: MainViewModel = hiltViewModel()) {
+fun Greeting(name: String, modifier: Modifier = Modifier) {
     Text(
         text = "Hello $name!",
         modifier = modifier

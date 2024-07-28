@@ -22,7 +22,7 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
-        buildConfigField("String", "BASE_URL", "\"https://swapi.dev/api/\"")
+        buildConfigField("String", "BASE_URL", "\"https://swapi.dev/\"")
     }
 
     buildTypes {

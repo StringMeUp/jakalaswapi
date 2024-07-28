@@ -1,7 +1,7 @@
 package com.example.jakala_swapi.di
 
 import com.example.jakala_swapi.BuildConfig
-import com.example.jakala_swapi.data.SwapiRepositoryImpl
+import com.example.jakala_swapi.data.repository.SwapiRepositoryImpl
 import com.example.jakala_swapi.data.repository.SwapiRepository
 import com.example.jakala_swapi.helper.NetworkConstants
 import com.example.jakala_swapi.networking.SwapiService
