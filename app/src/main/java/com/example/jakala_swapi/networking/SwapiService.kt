@@ -3,6 +3,7 @@ package com.example.jakala_swapi.networking
 import com.example.jakala_swapi.data.model.MovieDetail
 import com.example.jakala_swapi.data.model.MovieResponse
 import com.example.jakala_swapi.data.model.PeopleResponse
+import com.example.jakala_swapi.data.model.PlanetResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -19,5 +20,5 @@ interface SwapiService {
     suspend fun getPeople(@Query("page") page: Int): Response<PeopleResponse>
 
     @GET("api/planets")
-    fun getPlanets(): Response<Unit>
+    fun getPlanets(@Query("search") query: String): Response<PlanetResponse>
 }

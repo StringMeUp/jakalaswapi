@@ -18,7 +18,7 @@ data class PeopleDetail(
     @SerialName("birth_year")
     val birthYear: String?,
     @SerialName("homeworld")
-    val homeworld: String?,
+    val homeWorld: String?,
     @SerialName("films")
     val films: List<String> = listOf(),
 )
