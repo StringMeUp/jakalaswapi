@@ -3,6 +3,7 @@ package com.example.jakala_swapi.ui
 import com.example.jakala_swapi.data.model.Movie
 import com.example.jakala_swapi.data.model.MovieDetail
 import com.example.jakala_swapi.data.model.PeopleDetail
+import com.example.jakala_swapi.data.model.PlanetResponse
 import javax.annotation.concurrent.Immutable
 
 /** Both data classes and sealed classes have their place when representing state in vms, depending on the usecase.*/
@@ -27,4 +28,10 @@ data class PeopleUiState(
     val isLoading: Boolean = true,
     val isError: Boolean = false,
     val page: Int = 1,
+)
+
+data class SearchResultState(
+    val items: List<PlanetResponse.Planet> = emptyList(),
+    val isLoading: Boolean = true,
+    val isEmpty: Boolean = false,
 )

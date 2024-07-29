@@ -3,6 +3,7 @@ package com.example.jakala_swapi.helper
 import com.example.jakala_swapi.data.model.Movie
 import com.example.jakala_swapi.data.model.MovieDetail
 import com.example.jakala_swapi.data.model.PeopleDetail
+import com.example.jakala_swapi.data.model.PlanetResponse
 import com.example.jakala_swapi.ui.MovieUiState
 
 object UiStateProvider {
@@ -54,6 +55,20 @@ object UiStateProvider {
                 "Somewhere",
                 listOf("Movie 3", "Movie 4", "Movie 5")
             )
+        )
+    }
+
+    fun defaultPlanet(): PlanetResponse.Planet {
+        return PlanetResponse.Planet(
+            "Earth",
+            "1",
+            "3",
+            "99887",
+            "Friendly",
+            "Yes",
+            "Terrain",
+            "4",
+            "666",
         )
     }
 }

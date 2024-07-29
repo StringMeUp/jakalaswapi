@@ -13,6 +13,7 @@ import com.example.jakala_swapi.ui.screens.movies.MoviesDetailScreen
 import com.example.jakala_swapi.ui.screens.movies.MoviesScreen
 import com.example.jakala_swapi.ui.screens.movies.MoviesViewModel
 import com.example.jakala_swapi.ui.screens.people.PeopleScreen
+import com.example.jakala_swapi.ui.screens.search.SearchScreen
 
 
 @Composable
@@ -39,11 +40,12 @@ fun AppNavigation(
             }
 
             composable(NavigationItem.BottomNav.Planets.route) { _ ->
-
+                SearchScreen(padding = padding)
             }
 
             composable(route = NavigationItem.BottomNav.Movies.MovieDetail.route) { backStackEntry ->
-                val sharedViewmodel: MoviesViewModel = backStackEntry.viewModelScopedTo(route = NavigationItem.BottomNav.Movies.route)
+                val sharedViewmodel: MoviesViewModel =
+                    backStackEntry.viewModelScopedTo(route = NavigationItem.BottomNav.Movies.route)
                 MoviesDetailScreen(
                     padding = padding,
                     viewModel = sharedViewmodel

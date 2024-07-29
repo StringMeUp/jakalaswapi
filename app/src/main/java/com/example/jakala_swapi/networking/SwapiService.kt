@@ -20,5 +20,5 @@ interface SwapiService {
     suspend fun getPeople(@Query("page") page: Int): Response<PeopleResponse>
 
     @GET("api/planets")
-    fun getPlanets(@Query("search") query: String): Response<PlanetResponse>
+    suspend fun getPlanets(@Query("search") query: String): Response<PlanetResponse>
 }
