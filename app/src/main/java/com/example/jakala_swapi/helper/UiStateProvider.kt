@@ -3,7 +3,7 @@ package com.example.jakala_swapi.helper
 import com.example.jakala_swapi.data.model.Movie
 import com.example.jakala_swapi.ui.MovieUiState
 
-object UiState {
+object UiStateProvider {
     fun defaultMoviesUiState(): MovieUiState =
         MovieUiState.Success(
             listOf(

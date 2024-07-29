@@ -25,7 +25,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.jakala_swapi.R
-import com.example.jakala_swapi.helper.UiState.defaultMoviesUiState
+import com.example.jakala_swapi.helper.UiStateProvider.defaultMoviesUiState
 import com.example.jakala_swapi.ui.MovieUiState
 import com.example.jakala_swapi.ui.UiState
 import com.example.jakala_swapi.widgets.HeaderItem
