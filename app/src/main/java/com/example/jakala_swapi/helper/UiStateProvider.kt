@@ -1,6 +1,7 @@
 package com.example.jakala_swapi.helper
 
 import com.example.jakala_swapi.data.model.Movie
+import com.example.jakala_swapi.data.model.MovieDetail
 import com.example.jakala_swapi.ui.MovieUiState
 
 object UiStateProvider {
@@ -25,4 +26,13 @@ object UiStateProvider {
                 )
             )
         )
+
+    fun defaultMovieDetail(): MovieDetail {
+        return MovieDetail(
+            "A New Hope",
+            1,
+            "A long time ago in a galaxy far, far away…",
+            "22.07.2020"
+        )
+    }
 }

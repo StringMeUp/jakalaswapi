@@ -28,12 +28,14 @@ import com.example.jakala_swapi.R
 import com.example.jakala_swapi.helper.UiStateProvider.defaultMoviesUiState
 import com.example.jakala_swapi.ui.MovieUiState
 import com.example.jakala_swapi.ui.UiState
+import com.example.jakala_swapi.widgets.ErrorItem
 import com.example.jakala_swapi.widgets.HeaderItem
+import com.example.jakala_swapi.widgets.LoadingItem
 
 @Composable
 fun MoviesScreen(
     viewModel: MoviesViewModel = hiltViewModel(),
-    navigateToDetail: (id:String) -> Unit = {},
+    navigateToDetail: () -> Unit = {},
     padding: PaddingValues
 ) {
 
@@ -43,7 +45,7 @@ fun MoviesScreen(
             moviesUiState = moviesUiState,
             padding = it,
             findMovieId = { viewModel.setMovieId(it) },
-            navigateToDetail = { navigateToDetail(it) },
+            navigateToDetail = { navigateToDetail() },
         )
     }
 }
@@ -53,19 +55,13 @@ fun MoviesScreen(
 private fun MoviesScreenContent(
     moviesUiState: UiState = defaultMoviesUiState(),
     padding: PaddingValues = PaddingValues(),
-    navigateToDetail: (id:String) -> Unit = {},
-    findMovieId: (input: String) -> Unit = {}
+    findMovieId: (input: String) -> Unit = {},
+    navigateToDetail: () -> Unit = {},
 ) {
 
     when (val state = moviesUiState) {
-        UiState.Error -> {
-            Text(text = "Error")
-        }
-
-        UiState.Loading -> {
-            Text(text = "Loading")
-        }
-
+        UiState.Error -> ErrorItem()
+        UiState.Loading -> LoadingItem()
         is MovieUiState.Success -> {
             LazyColumn {
                 item {
@@ -83,7 +79,7 @@ private fun MoviesScreenContent(
                             .shadow(2.dp, RoundedCornerShape(16.dp))
                             .clickable {
                                 findMovieId(it.url ?: "")
-                                navigateToDetail(it.url?.filter { it.isDigit() }.toString())
+                                navigateToDetail()
                             },
                         colors = ListItemDefaults.colors(containerColor = Color.LightGray),
 

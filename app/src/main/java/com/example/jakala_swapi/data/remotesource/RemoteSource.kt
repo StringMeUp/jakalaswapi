@@ -22,6 +22,6 @@ object RemoteSource {
             }
         }.catch { httpErr ->
             println("Error stacktrace:: $httpErr ")
-            emit(Result.Error())
+            emit(Result.Error(httpErr))
         }.flowOn(Dispatchers.IO)
 }

@@ -27,27 +27,22 @@ fun AppNavigation(
             route = Graph.BOTTOM
         ) {
 
-            composable(NavigationItem.BottomNav.Movies.route) { backStackEntry ->
+            composable(NavigationItem.BottomNav.Movies.route) { _ ->
                 MoviesScreen(
                     padding = padding,
-                    navigateToDetail = {
-                        navController.navigate(
-                            NavigationItem.BottomNav.Movies.MovieDetail.route
-                        )
-                    })
+                    navigateToDetail = { navController.navigate(NavigationItem.BottomNav.Movies.MovieDetail.route) })
             }
 
-            composable(NavigationItem.BottomNav.People.route) { backStackEntry ->
-                MoviesScreen(padding = padding)
+            composable(NavigationItem.BottomNav.People.route) { _ ->
+
             }
 
-            composable(NavigationItem.BottomNav.Planets.route) { backStackEntry ->
-                MoviesScreen(padding = padding)
+            composable(NavigationItem.BottomNav.Planets.route) { _ ->
+
             }
 
             composable(route = NavigationItem.BottomNav.Movies.MovieDetail.route) { backStackEntry ->
-                val sharedViewmodel: MoviesViewModel =
-                    backStackEntry.viewModelScopedTo(route = NavigationItem.BottomNav.Movies.route)
+                val sharedViewmodel: MoviesViewModel = backStackEntry.viewModelScopedTo(route = NavigationItem.BottomNav.Movies.route)
                 MoviesDetailScreen(
                     padding = padding,
                     viewModel = sharedViewmodel
