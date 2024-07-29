@@ -48,7 +48,7 @@ fun ErrorItem(modifier: Modifier = Modifier) {
                 fontWeight = FontWeight.Medium,
                 textAlign = TextAlign.Center,
                 modifier = Modifier.padding(24.dp),
-                text = "Luke, something went terribly wrong...you have to try later. For the dark side. "
+                text = stringResource(R.string.error_decr_text)
             )
         }
     }

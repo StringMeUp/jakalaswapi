@@ -47,7 +47,7 @@ fun DetailItem(
         }
 
         withStyle(normalStyle) {
-            append("Release date: ${movieDetail.releaseDate}")
+            append("Release date: ${movieDetail.formattedDate}")
         }
 
     }

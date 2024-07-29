@@ -12,4 +12,5 @@
     <string name="header_item_movies">Hello, these are your movies.</string>
     <string name="header_item_people">Your favorite peeps, scrolled into infinity and beyond.</string>
     <string name="error_image_content_description">Error image</string>
+    <string name="error_decr_text">"Luke, something went terribly wrong...you have to try later."</string>
 </resources>

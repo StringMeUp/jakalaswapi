@@ -5,6 +5,7 @@ import com.example.jakala_swapi.data.model.MovieResponse
 import com.example.jakala_swapi.data.model.PeopleResponse
 import com.example.jakala_swapi.data.model.PlanetResponse
 import com.example.jakala_swapi.ui.MovieUiState
+import java.time.LocalDate
 
 object UiStateProvider {
     fun defaultMoviesUiState(): MovieUiState = MovieUiState.Success(
@@ -23,7 +24,7 @@ object UiStateProvider {
 
     fun defaultMovieDetail(): MovieDetail {
         return MovieDetail(
-            "A New Hope", 1, "A long time ago in a galaxy far, far away…", "22.07.2020"
+            "A New Hope", 1, "A long time ago in a galaxy far, far away…", LocalDate.now()
         )
     }
 
