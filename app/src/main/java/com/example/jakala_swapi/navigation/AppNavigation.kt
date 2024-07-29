@@ -12,6 +12,7 @@ import com.example.jakala_swapi.navigation.NavigationCompositionLocals.viewModel
 import com.example.jakala_swapi.ui.screens.movies.MoviesDetailScreen
 import com.example.jakala_swapi.ui.screens.movies.MoviesScreen
 import com.example.jakala_swapi.ui.screens.movies.MoviesViewModel
+import com.example.jakala_swapi.ui.screens.people.PeopleScreen
 
 
 @Composable
@@ -34,7 +35,7 @@ fun AppNavigation(
             }
 
             composable(NavigationItem.BottomNav.People.route) { _ ->
-
+                PeopleScreen(padding = padding)
             }
 
             composable(NavigationItem.BottomNav.Planets.route) { _ ->

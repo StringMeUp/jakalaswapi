@@ -31,13 +31,7 @@ sealed class NavigationItem(
             icon = R.drawable.ic_people,
             selectedIcon = R.drawable.ic_people_selected,
             name = R.string.bottom_nav_people
-        ) {
-            data object PeopleDetail : NavigationItem(
-                route = "PeopleDetail/{id}",
-                name = R.string.bottom_nav_people_detail
-            )
-
-        }
+        )
 
         data object Planets : NavigationItem(
             route = "Planets",

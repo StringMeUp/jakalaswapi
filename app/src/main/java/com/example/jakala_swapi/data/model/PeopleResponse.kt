@@ -3,9 +3,9 @@ package com.example.jakala_swapi.data.model
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class MovieResponse(
+data class PeopleResponse(
     val count: Int?,
     val next: String?,
     val previous: String?,
-    val results: List<Movie>
+    val results: List<PeopleDetail>
 )

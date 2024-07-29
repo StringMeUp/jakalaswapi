@@ -12,7 +12,7 @@ import com.example.jakala_swapi.R
 @Composable
 fun HeaderItem(
     modifier: Modifier = Modifier,
-    title: String = stringResource(id = R.string.header_item_title),
+    title: String = stringResource(id = R.string.header_item_movies),
 ) {
     Text(
         text = title,
