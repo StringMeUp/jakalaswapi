@@ -1,8 +1,8 @@
 package com.example.jakala_swapi.ui
 
-import com.example.jakala_swapi.data.model.Movie
 import com.example.jakala_swapi.data.model.MovieDetail
-import com.example.jakala_swapi.data.model.PeopleDetail
+import com.example.jakala_swapi.data.model.MovieResponse
+import com.example.jakala_swapi.data.model.PeopleResponse
 import com.example.jakala_swapi.data.model.PlanetResponse
 import javax.annotation.concurrent.Immutable
 
@@ -15,7 +15,7 @@ sealed interface UiState {
 
 @Immutable
 sealed interface MovieUiState : UiState {
-    data class Success(val movies: List<Movie>) : MovieUiState
+    data class Success(val movies: List<MovieResponse.Movie>) : MovieUiState
 }
 
 @Immutable
@@ -24,7 +24,7 @@ sealed interface MovieDetailUiState : UiState {
 }
 
 data class PeopleUiState(
-    val items: List<PeopleDetail> = emptyList(),
+    val items: List<PeopleResponse.PeopleDetail> = emptyList(),
     val isLoading: Boolean = true,
     val isError: Boolean = false,
     val page: Int = 1,

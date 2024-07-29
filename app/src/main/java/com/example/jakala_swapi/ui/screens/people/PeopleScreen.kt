@@ -100,10 +100,6 @@ private fun PeopleScreenContent(
                         supportingContent = {
                             Text(text = "Homeworld: ${it.name ?: "Unknown"}")
                         })
-
-                    it.films.forEach {
-                        Text(text = "Movies: $it")
-                    }
                 }
             }
         }

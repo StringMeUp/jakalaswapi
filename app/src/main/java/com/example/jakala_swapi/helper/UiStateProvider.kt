@@ -1,29 +1,22 @@
 package com.example.jakala_swapi.helper
 
-import com.example.jakala_swapi.data.model.Movie
 import com.example.jakala_swapi.data.model.MovieDetail
-import com.example.jakala_swapi.data.model.PeopleDetail
+import com.example.jakala_swapi.data.model.MovieResponse
+import com.example.jakala_swapi.data.model.PeopleResponse
 import com.example.jakala_swapi.data.model.PlanetResponse
 import com.example.jakala_swapi.ui.MovieUiState
 
 object UiStateProvider {
     fun defaultMoviesUiState(): MovieUiState = MovieUiState.Success(
         listOf(
-            Movie(
+            MovieResponse.Movie(
                 "Dark Side",
                 1,
                 "Here we go!",
                 "Unknown",
                 "Samir",
                 "21.11.1988",
-                listOf(),
-                listOf(),
-                listOf(),
-                listOf(),
-                listOf(),
-                null,
-                null,
-                null
+                ""
             )
         )
     )
@@ -34,9 +27,9 @@ object UiStateProvider {
         )
     }
 
-    fun defaultPeople(): List<PeopleDetail> {
+    fun defaultPeople(): List<PeopleResponse.PeopleDetail> {
         return listOf(
-            PeopleDetail(
+            PeopleResponse.PeopleDetail(
                 "Luke",
                 "1.78",
                 "Black",
@@ -44,8 +37,7 @@ object UiStateProvider {
                 "Blur",
                 "1988",
                 "Erath",
-                listOf("Movie 1", "Movie 2", "Movie 3")
-            ), PeopleDetail(
+            ), PeopleResponse.PeopleDetail(
                 "Sam",
                 "2.00",
                 "Black",
@@ -53,7 +45,6 @@ object UiStateProvider {
                 "Blur",
                 "1988",
                 "Somewhere",
-                listOf("Movie 3", "Movie 4", "Movie 5")
             )
         )
     }
