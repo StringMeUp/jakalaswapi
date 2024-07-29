@@ -7,6 +7,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.jakala_swapi.helper.setBottomBar
 import com.example.jakala_swapi.navigation.NavigationCompositionLocals.NavigationProvider
 import com.example.jakala_swapi.navigation.NavigationCompositionLocals.viewModelScopedTo
 import com.example.jakala_swapi.ui.screens.movies.MoviesDetailScreen
@@ -30,6 +31,7 @@ fun AppNavigation(
         ) {
 
             composable(NavigationItem.BottomNav.Movies.route) { _ ->
+                bottomBarState.setBottomBar(true)
                 MoviesScreen(
                     padding = padding,
                     navigateToDetail = { navController.navigate(NavigationItem.BottomNav.Movies.MovieDetail.route) })
@@ -44,6 +46,7 @@ fun AppNavigation(
             }
 
             composable(route = NavigationItem.BottomNav.Movies.MovieDetail.route) { backStackEntry ->
+                bottomBarState.setBottomBar(false)
                 val sharedViewmodel: MoviesViewModel =
                     backStackEntry.viewModelScopedTo(route = NavigationItem.BottomNav.Movies.route)
                 MoviesDetailScreen(
