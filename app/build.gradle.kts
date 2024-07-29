@@ -74,6 +74,8 @@ dependencies {
     implementation(libs.serialization.converter)
     /* Net:OkHttp*/
     implementation(libs.okHttp)
+    implementation(libs.okhttp.logging)
+    implementation(libs.lifecycle.compose)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)

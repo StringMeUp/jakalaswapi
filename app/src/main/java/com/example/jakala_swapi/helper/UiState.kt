@@ -1,11 +1,11 @@
 package com.example.jakala_swapi.helper
 
 import com.example.jakala_swapi.data.model.Movie
-import com.example.jakala_swapi.ui.MainViewModel
+import com.example.jakala_swapi.ui.MovieUiState
 
 object UiState {
-    fun defaultMoviesUiState(): MainViewModel.MoviesUiState =
-        MainViewModel.MoviesUiState.Success(
+    fun defaultMoviesUiState(): MovieUiState =
+        MovieUiState.Success(
             listOf(
                 Movie(
                     "Dark Side",

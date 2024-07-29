@@ -21,7 +21,7 @@ sealed class NavigationItem(
             name = R.string.bottom_nav_movie
         ) {
             data object MovieDetail : NavigationItem(
-                route = "MovieDetail/{id}",
+                route = "MovieDetail",
                 name = R.string.bottom_nav_movie_detail
             )
         }

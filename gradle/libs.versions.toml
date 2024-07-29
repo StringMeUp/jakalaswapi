@@ -16,6 +16,7 @@ serializationconverter-version = "1.0.0"
 okHttp-version = "4.12.0"
 hilt-navigation-compose-version = "1.2.0"
 navigation-compose-version = "2.7.7"
+lifecycle-compose-version = "2.6.2"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -48,6 +49,9 @@ kotlinx-serialization = { group = "org.jetbrains.kotlinx", name = "kotlinx-seria
 serialization-converter = { group = "com.jakewharton.retrofit", name = "retrofit2-kotlinx-serialization-converter", version.ref = "serializationconverter-version" }
 # OkHttp
 okHttp = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okHttp-version" }
+okhttp-logging = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okHttp-version" }
+# Lifecycle
+lifecycle-compose = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "lifecycle-compose-version" }
 
 
 [plugins]
