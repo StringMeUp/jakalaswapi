@@ -32,9 +32,9 @@ import com.example.jakala_swapi.R
 import com.example.jakala_swapi.helper.UiStateProvider
 import com.example.jakala_swapi.helper.bottomReached
 import com.example.jakala_swapi.ui.PeopleUiState
-import com.example.jakala_swapi.widgets.ErrorItem
-import com.example.jakala_swapi.widgets.HeaderItem
-import com.example.jakala_swapi.widgets.LoadingItem
+import com.example.jakala_swapi.ui.widgets.ErrorItem
+import com.example.jakala_swapi.ui.widgets.HeaderItem
+import com.example.jakala_swapi.ui.widgets.LoadingItem
 
 @Composable
 fun PeopleScreen(

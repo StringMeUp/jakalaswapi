@@ -1,4 +1,4 @@
-package com.example.jakala_swapi.widgets
+package com.example.jakala_swapi.ui.widgets
 
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable

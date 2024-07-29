@@ -1,4 +1,4 @@
-package com.example.jakala_swapi.widgets
+package com.example.jakala_swapi.ui.widgets
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement

@@ -28,9 +28,9 @@ import com.example.jakala_swapi.R
 import com.example.jakala_swapi.helper.UiStateProvider.defaultMoviesUiState
 import com.example.jakala_swapi.ui.MovieUiState
 import com.example.jakala_swapi.ui.UiState
-import com.example.jakala_swapi.widgets.ErrorItem
-import com.example.jakala_swapi.widgets.HeaderItem
-import com.example.jakala_swapi.widgets.LoadingItem
+import com.example.jakala_swapi.ui.widgets.ErrorItem
+import com.example.jakala_swapi.ui.widgets.HeaderItem
+import com.example.jakala_swapi.ui.widgets.LoadingItem
 
 @Composable
 fun MoviesScreen(

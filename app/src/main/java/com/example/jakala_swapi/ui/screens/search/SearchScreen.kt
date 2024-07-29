@@ -25,8 +25,8 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.jakala_swapi.helper.UiStateProvider
 import com.example.jakala_swapi.ui.SearchResultState
-import com.example.jakala_swapi.widgets.PlanetItem
-import com.example.jakala_swapi.widgets.PlanetItemEmptyState
+import com.example.jakala_swapi.ui.widgets.PlanetItem
+import com.example.jakala_swapi.ui.widgets.PlanetItemEmptyState
 
 @Composable
 fun SearchScreen(viewModel: SearchViewModel = hiltViewModel(), padding: PaddingValues) {

@@ -14,9 +14,9 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.jakala_swapi.helper.UiStateProvider
 import com.example.jakala_swapi.ui.MovieDetailUiState
 import com.example.jakala_swapi.ui.UiState
-import com.example.jakala_swapi.widgets.DetailItem
-import com.example.jakala_swapi.widgets.ErrorItem
-import com.example.jakala_swapi.widgets.LoadingItem
+import com.example.jakala_swapi.ui.widgets.DetailItem
+import com.example.jakala_swapi.ui.widgets.ErrorItem
+import com.example.jakala_swapi.ui.widgets.LoadingItem
 
 @Composable
 fun MoviesDetailScreen(

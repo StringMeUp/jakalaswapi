@@ -15,7 +15,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.jakala_swapi.navigation.AppNavigation
 import com.example.jakala_swapi.ui.theme.JakalaswapiTheme
-import com.example.jakala_swapi.widgets.BottomBar
+import com.example.jakala_swapi.ui.widgets.BottomBar
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
