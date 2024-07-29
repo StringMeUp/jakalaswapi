@@ -10,6 +10,6 @@
     <string name="bottom_nav_planets_detail">Planets Detail</string>
     <!--Other-->
     <string name="header_item_movies">Hello, these are your movies.</string>
-    <string name="header_item_people">Hello, People.</string>
+    <string name="header_item_people">Your favorite peeps, scrolled into infinity and beyond.</string>
     <string name="error_image_content_description">Error image</string>
 </resources>

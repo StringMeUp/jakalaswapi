@@ -90,7 +90,7 @@ private fun PeopleScreenContent(
                         leadingContent = {
                             Image(
                                 modifier = Modifier.size(100.dp),
-                                painter = painterResource(id = R.drawable.ic_movie_selected),
+                                painter = painterResource(id = R.drawable.ic_people),
                                 contentDescription = ""
                             )
                         },
