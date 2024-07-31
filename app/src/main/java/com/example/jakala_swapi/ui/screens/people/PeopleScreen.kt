@@ -42,15 +42,15 @@ fun PeopleScreen(
     padding: PaddingValues
 ) {
     LaunchedEffect(Unit) {
-        viewModel.loadPeople()
+//        viewModel.loadPeople()
     }
 
-    val peopleUiState by viewModel.state.collectAsStateWithLifecycle()
+    val peopleUiState by viewModel.uiStateStateFlow.collectAsStateWithLifecycle()
     Scaffold(Modifier.padding(padding)) {
         PeopleScreenContent(
             padding = it,
             state = peopleUiState,
-            loadNextPage = { viewModel.loadNextPage() })
+            loadNextPage = { viewModel.loadNextPage(it) })
     }
 }
 
@@ -62,7 +62,7 @@ private fun PeopleScreenContent(
         isLoading = false
     ),
     padding: PaddingValues = PaddingValues(),
-    loadNextPage: () -> Unit = {}
+    loadNextPage: (page: Int) -> Unit = {}
 ) {
     val listState = rememberLazyListState()
 
@@ -110,6 +110,6 @@ private fun PeopleScreenContent(
     }
 
     LaunchedEffect(isBottomReached) {
-        if (isBottomReached) loadNextPage()
+        if (isBottomReached) loadNextPage(state.page)
     }
 }
