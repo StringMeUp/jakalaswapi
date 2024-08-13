@@ -18,6 +18,7 @@ hilt-navigation-compose-version = "1.2.0"
 navigation-compose-version = "2.7.7"
 lifecycle-compose-version = "2.6.2"
 material3-version = "1.2.1"
+room-version = "2.6.1"
 
 
 [libraries]
@@ -54,7 +55,9 @@ okHttp = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okHtt
 okhttp-logging = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okHttp-version" }
 # Lifecycle
 lifecycle-compose = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "lifecycle-compose-version" }
-
+# Room
+room = {group = "androidx.room", name = "room-runtime", version.ref = "room-version"}
+room-annotation = {group = "androidx.room", name = "room-compiler", version.ref = "room-version"}
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

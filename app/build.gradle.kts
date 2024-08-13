@@ -76,6 +76,9 @@ dependencies {
     implementation(libs.okHttp)
     implementation(libs.okhttp.logging)
     implementation(libs.lifecycle.compose)
+    /* Db:Room*/
+    implementation(libs.room)
+    ksp(libs.room.annotation)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)

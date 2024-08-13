@@ -40,13 +40,15 @@ class MoviesViewModel @Inject constructor(
 
     /*_________________Detail_________________*/
 
-    private val movieIdState = MutableStateFlow<String?>(null)
-    fun setMovieId(input: String?) {
-        movieIdState.value = input?.filter { it.isDigit() } ?: ""
-    }
+    private var movieIdFlow = MutableStateFlow("")
+    var movieId: String
+        get() = movieIdFlow.value
+        set(value) {
+            movieIdFlow.value = value.filter { it.isDigit() }
+        }
 
     @OptIn(ExperimentalCoroutinesApi::class)
-    val movieDetailState: StateFlow<UiState> = movieIdState
+    val movieDetailState: StateFlow<UiState> = movieIdFlow
         .filterNotNull()
         .flatMapLatest { id ->
             movieDetailUseCase.invoke(id)

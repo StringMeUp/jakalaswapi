@@ -45,7 +45,7 @@ fun MoviesScreen(
         MoviesScreenContent(
             moviesUiState = moviesUiState,
             padding = it,
-            findMovieId = { viewModel.setMovieId(it) },
+            findMovieId = { viewModel.movieId = it },
             navigateToDetail = { navigateToDetail() },
         )
     }
