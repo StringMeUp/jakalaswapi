@@ -13,7 +13,7 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.filterNotNull
+import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
@@ -49,7 +49,7 @@ class MoviesViewModel @Inject constructor(
 
     @OptIn(ExperimentalCoroutinesApi::class)
     val movieDetailState: StateFlow<UiState> = movieIdFlow
-        .filterNotNull()
+        .filter { it.isNotBlank() }
         .flatMapLatest { id ->
             movieDetailUseCase.invoke(id)
                 .map { result ->

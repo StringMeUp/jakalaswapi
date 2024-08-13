@@ -5,6 +5,7 @@ plugins {
     alias(libs.plugins.hilt)
     alias(libs.plugins.serialization)
     alias(libs.plugins.compose.compiler)
+    alias(libs.plugins.room.compiler)
 }
 
 android {
@@ -34,9 +35,14 @@ android {
             )
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
+    }
+
+    room {
+        schemaDirectory("$projectDir/schemas")
     }
 
     kotlinOptions {
@@ -78,6 +84,7 @@ dependencies {
     implementation(libs.lifecycle.compose)
     /* Db:Room*/
     implementation(libs.room)
+    implementation(libs.room.ktx)
     ksp(libs.room.annotation)
 
     implementation(libs.androidx.core.ktx)

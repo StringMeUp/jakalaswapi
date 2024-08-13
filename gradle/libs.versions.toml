@@ -56,8 +56,9 @@ okhttp-logging = { group = "com.squareup.okhttp3", name = "logging-interceptor",
 # Lifecycle
 lifecycle-compose = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "lifecycle-compose-version" }
 # Room
-room = {group = "androidx.room", name = "room-runtime", version.ref = "room-version"}
-room-annotation = {group = "androidx.room", name = "room-compiler", version.ref = "room-version"}
+room = { group = "androidx.room", name = "room-runtime", version.ref = "room-version" }
+room-ktx = {group = "androidx.room", name = "room-ktx", version.ref = "room-version"}
+room-annotation = { group = "androidx.room", name = "room-compiler", version.ref = "room-version" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
@@ -66,3 +67,4 @@ ksp = { id = "com.google.devtools.ksp", version.ref = "ksp-version" }
 hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt-version" }
 serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+room-compiler = { id = "androidx.room", version.ref = "room-version" }

@@ -1,14 +1,19 @@
 package com.example.jakala_swapi.di
 
+import android.content.Context
+import androidx.room.Room
 import com.example.jakala_swapi.BuildConfig
 import com.example.jakala_swapi.data.repository.SwapiRepository
 import com.example.jakala_swapi.data.repository.SwapiRepositoryImpl
+import com.example.jakala_swapi.data.db.AppDataBase
+import com.example.jakala_swapi.data.db.dao.MovieDetailDao
 import com.example.jakala_swapi.helper.NetworkConstants
 import com.example.jakala_swapi.networking.SwapiService
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import kotlinx.serialization.json.Json
 import okhttp3.OkHttpClient
@@ -21,6 +26,7 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 class AppModule {
 
+    /*--------------Network-------------*/
     @Provides
     @Singleton
     fun provideLoggerInterceptor(): HttpLoggingInterceptor {
@@ -50,6 +56,7 @@ class AppModule {
             .build()
     }
 
+    /*--------------Repository-------------*/
     @Provides
     @Singleton
     fun providesApiService(retrofit: Retrofit) = retrofit.create(SwapiService::class.java)
@@ -59,4 +66,16 @@ class AppModule {
     fun providesSwapiRepository(swapiRepositoryImpl: SwapiRepositoryImpl): SwapiRepository =
         swapiRepositoryImpl
 
+    /*--------------Db-------------*/
+    @Provides
+    @Singleton
+    fun providesAppDataBase(@ApplicationContext context: Context): AppDataBase {
+        return Room.databaseBuilder(context, AppDataBase::class.java, "swapi-db").build()
+    }
+
+    @Provides
+    @Singleton
+    fun provideMovieDetailDao(appDataBase: AppDataBase): MovieDetailDao {
+        return appDataBase.movieDetailDao()
+    }
 }
