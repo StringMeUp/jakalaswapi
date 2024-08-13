@@ -27,7 +27,7 @@ class PeopleViewModel @Inject constructor(
     private var currentPage = MutableStateFlow(1)
 
     @OptIn(ExperimentalCoroutinesApi::class)
-    val uiStateStateFlow: StateFlow<PeopleUiState> = currentPage
+    val peopleUiStateStateFlow: StateFlow<PeopleUiState> = currentPage
         .flatMapLatest { page ->
             peopleUseCase.invoke(page)
                 .map { result ->

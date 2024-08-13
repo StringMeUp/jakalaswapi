@@ -20,10 +20,11 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.example.jakala_swapi.helper.UiStateProvider
+import com.example.jakala_swapi.helper.preview.SearchResultUiStatePreviewProvider
 import com.example.jakala_swapi.ui.SearchResultState
 import com.example.jakala_swapi.ui.widgets.PlanetItem
 import com.example.jakala_swapi.ui.widgets.PlanetItemEmptyState
@@ -48,12 +49,9 @@ fun SearchScreen(viewModel: SearchViewModel = hiltViewModel(), padding: PaddingV
 @Preview(showBackground = true)
 @Composable
 private fun SearchScreenContent(
+    @PreviewParameter(SearchResultUiStatePreviewProvider::class) searchResults: SearchResultState,
     padding: PaddingValues = PaddingValues(),
     searchQuery: String = "",
-    searchResults: SearchResultState = SearchResultState(
-        items = listOf(UiStateProvider.defaultPlanet()),
-        isLoading = false
-    ),
     onSearchQueryChange: (query: String) -> Unit = {}
 ) {
     val keyboardController = LocalSoftwareKeyboardController.current

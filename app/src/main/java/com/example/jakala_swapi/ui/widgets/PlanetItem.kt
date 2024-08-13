@@ -14,16 +14,17 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.jakala_swapi.data.model.PlanetResponse
-import com.example.jakala_swapi.helper.UiStateProvider
+import com.example.jakala_swapi.helper.preview.SearchResultUiStatePreviewProvider
+import com.example.jakala_swapi.ui.SearchResultState
 
 @Composable
-@Preview(showBackground = true)
 fun PlanetItem(
     modifier: Modifier = Modifier,
-    planet: PlanetResponse.Planet = UiStateProvider.defaultPlanet(),
+    planet: PlanetResponse.Planet,
 ) {
     Column(
         verticalArrangement = Arrangement.Center,
@@ -46,4 +47,13 @@ fun PlanetItem(
         Text(text = "Gravity: ${planet.gravity}")
         Text(text = "Diameter: ${planet.diameter}")
     }
+}
+
+@Composable
+@Preview(showBackground = true)
+fun PlanetItemPreview(
+    @PreviewParameter(SearchResultUiStatePreviewProvider::class, limit = 1) searchResult: SearchResultState,
+    modifier: Modifier = Modifier,
+) {
+    PlanetItem(planet = searchResult.items[0])
 }

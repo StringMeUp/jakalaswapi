@@ -8,10 +8,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.example.jakala_swapi.helper.UiStateProvider
+import com.example.jakala_swapi.helper.preview.MovieDetailUiStatePreviewProvider
 import com.example.jakala_swapi.ui.MovieDetailUiState
 import com.example.jakala_swapi.ui.UiState
 import com.example.jakala_swapi.ui.widgets.DetailItem
@@ -29,23 +30,32 @@ fun MoviesDetailScreen(
     }
 }
 
-@Preview(showBackground = true)
 @Composable
+
 private fun MoviesDetailScreenContent(
     paddingValues: PaddingValues = PaddingValues(),
-    movieDetailUiState: UiState = MovieDetailUiState.SuccessDetail(UiStateProvider.defaultMovieDetail()),
+    movieDetailUiState: UiState,
 ) {
-    when (val s = movieDetailUiState) {
+    when (movieDetailUiState) {
         UiState.Error -> ErrorItem()
         UiState.Loading -> LoadingItem()
         is MovieDetailUiState.SuccessDetail -> {
             DetailItem(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(top = 24.dp), movieDetail = s.movie
+                    .padding(top = 24.dp),
+                movieDetail = movieDetailUiState.movie
             )
         }
 
         else -> {}
     }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun MovieDetailPreview(
+    @PreviewParameter(MovieDetailUiStatePreviewProvider::class) movieDetailUiState: UiState,
+) {
+    MoviesDetailScreenContent(movieDetailUiState = movieDetailUiState)
 }

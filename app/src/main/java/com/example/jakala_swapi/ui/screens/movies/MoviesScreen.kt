@@ -21,11 +21,12 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.jakala_swapi.R
-import com.example.jakala_swapi.helper.UiStateProvider.defaultMoviesUiState
+import com.example.jakala_swapi.helper.preview.MovieUiStatePreviewProvider
 import com.example.jakala_swapi.ui.MovieUiState
 import com.example.jakala_swapi.ui.UiState
 import com.example.jakala_swapi.ui.widgets.ErrorItem
@@ -51,9 +52,8 @@ fun MoviesScreen(
 }
 
 @Composable
-@Preview(showBackground = true)
 private fun MoviesScreenContent(
-    moviesUiState: UiState = defaultMoviesUiState(),
+    moviesUiState: UiState,
     padding: PaddingValues = PaddingValues(),
     findMovieId: (input: String) -> Unit = {},
     navigateToDetail: () -> Unit = {},
@@ -105,4 +105,12 @@ private fun MoviesScreenContent(
             /** Ignore */
         }
     }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun MoviesPreview(
+    @PreviewParameter(MovieUiStatePreviewProvider::class) uiState: UiState
+) {
+    MoviesScreenContent(uiState)
 }

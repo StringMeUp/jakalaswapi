@@ -25,12 +25,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.jakala_swapi.R
-import com.example.jakala_swapi.helper.UiStateProvider
 import com.example.jakala_swapi.helper.bottomReached
+import com.example.jakala_swapi.helper.preview.PeopleUiStatePreviewProvider
 import com.example.jakala_swapi.ui.PeopleUiState
 import com.example.jakala_swapi.ui.widgets.ErrorItem
 import com.example.jakala_swapi.ui.widgets.HeaderItem
@@ -41,11 +42,7 @@ fun PeopleScreen(
     viewModel: PeopleViewModel = hiltViewModel(),
     padding: PaddingValues
 ) {
-    LaunchedEffect(Unit) {
-//        viewModel.loadPeople()
-    }
-
-    val peopleUiState by viewModel.uiStateStateFlow.collectAsStateWithLifecycle()
+    val peopleUiState by viewModel.peopleUiStateStateFlow.collectAsStateWithLifecycle()
     Scaffold(Modifier.padding(padding)) {
         PeopleScreenContent(
             padding = it,
@@ -57,10 +54,7 @@ fun PeopleScreen(
 @Composable
 @Preview(showBackground = true)
 private fun PeopleScreenContent(
-    state: PeopleUiState = PeopleUiState(
-        items = UiStateProvider.defaultPeople(),
-        isLoading = false
-    ),
+    @PreviewParameter(PeopleUiStatePreviewProvider::class) state: PeopleUiState,
     padding: PaddingValues = PaddingValues(),
     loadNextPage: (page: Int) -> Unit = {}
 ) {

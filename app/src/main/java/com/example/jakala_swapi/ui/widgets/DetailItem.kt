@@ -13,15 +13,13 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
 import com.example.jakala_swapi.R
 import com.example.jakala_swapi.data.model.MovieDetail
-import com.example.jakala_swapi.helper.UiStateProvider
 
-@Preview(showBackground = true)
 @Composable
+@Preview(showBackground = true)
 fun DetailItem(
     modifier: Modifier = Modifier,
-    movieDetail: MovieDetail = UiStateProvider.defaultMovieDetail(),
+    movieDetail: MovieDetail = MovieDetail(),
 ) {
-
     val boldStyle = SpanStyle(
         fontSize = 24.sp,
         color = colorResource(id = R.color.black),
