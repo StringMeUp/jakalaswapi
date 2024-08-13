@@ -14,6 +14,7 @@ data class MovieDetail(
     val openingCrawl: String? = null,
     @Serializable(with = DateSerializer::class)
     @SerialName("release_date") val releaseDate: LocalDate? = null,
+    val isFavorite: Boolean = false
 ){
     val formattedDate = releaseDate?.format(DateTimeFormatter.ofPattern("dd.MM.yyyy"))
 }

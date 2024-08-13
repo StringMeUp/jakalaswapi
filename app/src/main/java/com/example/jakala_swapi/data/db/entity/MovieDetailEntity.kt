@@ -9,10 +9,11 @@ import java.time.LocalDate
 @Serializable
 @Entity("moviedetail")
 data class MovieDetailEntity(
-    val title: String,
     @PrimaryKey
-    val episodeId: Int,
-    val openingCrawl: String,
+    val title: String,
+    val episodeId: Int?,
+    val openingCrawl: String?,
     @Serializable(with = DateSerializer::class)
-    val releaseDate: LocalDate,
+    val releaseDate: LocalDate?,
+    val isFavorite: Boolean = false
 )

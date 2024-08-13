@@ -45,7 +45,7 @@ fun MoviesScreen(
         MoviesScreenContent(
             moviesUiState = moviesUiState,
             padding = it,
-            setMovieId = { viewModel.movieId = it },
+            setMovieIdentifier = { viewModel.movieId = it },
             navigateToDetail = { navigateToDetail() },
         )
     }
@@ -55,7 +55,7 @@ fun MoviesScreen(
 private fun MoviesScreenContent(
     moviesUiState: UiState,
     padding: PaddingValues = PaddingValues(),
-    setMovieId: (input: String) -> Unit = {},
+    setMovieIdentifier: (identifier: Pair<String, String>) -> Unit = {},
     navigateToDetail: () -> Unit = {},
 ) {
 
@@ -78,7 +78,7 @@ private fun MoviesScreenContent(
                             .padding(8.dp)
                             .shadow(2.dp, RoundedCornerShape(16.dp))
                             .clickable {
-                                setMovieId(it.url ?: "")
+                                setMovieIdentifier((it.url ?: "") to it.title)
                                 navigateToDetail()
                             },
                         colors = ListItemDefaults.colors(containerColor = Color.LightGray),

@@ -12,6 +12,7 @@ import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.example.jakala_swapi.data.model.MovieDetail
 import com.example.jakala_swapi.helper.preview.MovieDetailUiStatePreviewProvider
 import com.example.jakala_swapi.ui.MovieDetailUiState
 import com.example.jakala_swapi.ui.UiState
@@ -26,15 +27,15 @@ fun MoviesDetailScreen(
 ) {
     val state by viewModel.movieDetailState.collectAsStateWithLifecycle()
     Scaffold(modifier = Modifier.padding(padding)) {
-        MoviesDetailScreenContent(it, state)
+        MoviesDetailScreenContent(it, state) { viewModel.saveMovieDetail(it) }
     }
 }
 
 @Composable
-
 private fun MoviesDetailScreenContent(
     paddingValues: PaddingValues = PaddingValues(),
     movieDetailUiState: UiState,
+    saveMovieDetail: (movieDetail: MovieDetail) -> Unit = {}
 ) {
     when (movieDetailUiState) {
         UiState.Error -> ErrorItem()
@@ -45,7 +46,7 @@ private fun MoviesDetailScreenContent(
                     .fillMaxWidth()
                     .padding(top = 24.dp),
                 movieDetail = movieDetailUiState.movie
-            )
+            ) { saveMovieDetail(movieDetailUiState.movie) }
         }
 
         else -> {}

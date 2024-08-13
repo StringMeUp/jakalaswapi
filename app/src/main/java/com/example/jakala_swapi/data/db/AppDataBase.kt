@@ -6,7 +6,7 @@ import androidx.room.TypeConverters
 import com.example.jakala_swapi.data.db.dao.MovieDetailDao
 import com.example.jakala_swapi.data.db.entity.MovieDetailEntity
 
-@Database(entities = [MovieDetailEntity::class], version = 0)
+@Database(entities = [MovieDetailEntity::class], version = 1)
 @TypeConverters(Converters::class)
 abstract class AppDataBase : RoomDatabase() {
     abstract fun movieDetailDao(): MovieDetailDao
