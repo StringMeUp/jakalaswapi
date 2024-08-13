@@ -12,10 +12,10 @@ import javax.inject.Inject
 
 class GetMovieDetailUseCase @Inject constructor(
     private val repository: SwapiRepository,
-    private val dao: MovieDetailDao
+    private val movieDetailDao: MovieDetailDao
 ) {
     operator fun invoke(id: String, title: String): Flow<Result<MovieDetail>> =
-        dao.getMovieDetail(title).combine(repository.getMovieDetail(id)) { a, b -> a to b }
+        movieDetailDao.getMovieDetail(title).combine(repository.getMovieDetail(id)) { a, b -> a to b }
             .map { (movieDetailEntity, movieDetail) ->
                 movieDetailEntity?.let { Result.Success(it.toMovieDetail()) } ?: movieDetail
             }

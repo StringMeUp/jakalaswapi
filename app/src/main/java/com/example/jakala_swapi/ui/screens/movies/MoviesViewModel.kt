@@ -27,7 +27,7 @@ import javax.inject.Inject
 @HiltViewModel
 class MoviesViewModel @Inject constructor(
     moviesUseCase: GetMoviesUseCase,
-    private val movieDetailUseCase: GetMovieDetailUseCase,
+    private val getMovieDetailUseCase: GetMovieDetailUseCase,
     private val upsertMovieDetail: UpsertMovieDetail
 ) : ViewModel() {
 
@@ -57,7 +57,7 @@ class MoviesViewModel @Inject constructor(
     val movieDetailState: StateFlow<UiState> = movieIdFlow
         .filter { it.first.isNotBlank() && it.second.isNotBlank() }
         .flatMapLatest { (id, title) ->
-            movieDetailUseCase.invoke(id, title)
+            getMovieDetailUseCase.invoke(id, title)
                 .map { result ->
                     when (result) {
                         is Result.Loading -> UiState.Loading
