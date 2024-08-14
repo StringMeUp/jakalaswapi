@@ -6,7 +6,7 @@ import com.example.jakala_swapi.data.model.MovieDetail
 import com.example.jakala_swapi.data.remotesource.Result
 import com.example.jakala_swapi.domain.GetMovieDetailUseCase
 import com.example.jakala_swapi.domain.GetMoviesUseCase
-import com.example.jakala_swapi.domain.UpsertMovieDetail
+import com.example.jakala_swapi.domain.UpsertMovieDetailUseCase
 import com.example.jakala_swapi.ui.MovieDetailUiState
 import com.example.jakala_swapi.ui.MovieUiState
 import com.example.jakala_swapi.ui.UiState
@@ -28,7 +28,7 @@ import javax.inject.Inject
 class MoviesViewModel @Inject constructor(
     moviesUseCase: GetMoviesUseCase,
     private val getMovieDetailUseCase: GetMovieDetailUseCase,
-    private val upsertMovieDetail: UpsertMovieDetail
+    private val upsertMovieDetailUseCase: UpsertMovieDetailUseCase
 ) : ViewModel() {
 
     val movieUiState: StateFlow<UiState> =
@@ -76,7 +76,7 @@ class MoviesViewModel @Inject constructor(
     fun saveMovieDetail(movieDetail: MovieDetail) {
         viewModelScope.launch(Dispatchers.IO) {
             val isFavorite = !movieDetail.isFavorite
-            upsertMovieDetail.invoke(movieDetail.copy(isFavorite = isFavorite))
+            upsertMovieDetailUseCase.invoke(movieDetail.copy(isFavorite = isFavorite))
         }
     }
 }

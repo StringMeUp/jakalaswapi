@@ -59,7 +59,7 @@ class AppModule {
     /*--------------Repository-------------*/
     @Provides
     @Singleton
-    fun providesApiService(retrofit: Retrofit) = retrofit.create(SwapiService::class.java)
+    fun providesApiService(retrofit: Retrofit): SwapiService = retrofit.create(SwapiService::class.java)
 
     @Provides
     @Singleton
