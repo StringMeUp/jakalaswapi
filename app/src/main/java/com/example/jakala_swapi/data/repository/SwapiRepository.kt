@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface SwapiRepository {
      fun getMovies(): Flow<Result<MovieResponse>>
-     fun getMovieDetail(id: String): Flow<Result<MovieDetail>>
+     fun getMovieDetail(id: String, title: String): Flow<Result<MovieDetail>>
      fun getPeople(id: Int): Flow<Result<PeopleResponse>>
      fun searchPlanets(query: String): Flow<Result<PlanetResponse>>
 }
