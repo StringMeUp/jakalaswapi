@@ -36,7 +36,7 @@ class SwapiRepositoryImpl @Inject constructor(
                     }
 
                     is Result.Success -> {
-                        if (movieDetailDao.isPresent(title)) {
+                        if (movieDetailDao.isMovieDetailPresent(title)) {
                             movieDetailDao.updateMovieDetail(apiResult.data.toMovieUpdate())
                         } else {
                             trySend(Result.Success(apiResult.data))

@@ -20,5 +20,5 @@ interface MovieDetailDao {
     fun getMovieDetail(title: String): Flow<MovieDetailEntity?>
 
     @Query("SELECT EXISTS(SELECT 1 FROM moviedetail WHERE title == :title)")
-    fun isPresent(title: String): Boolean
+    fun isMovieDetailPresent(title: String): Boolean
 }
