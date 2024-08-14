@@ -1,6 +1,7 @@
 package com.example.jakala_swapi.data.dto
 
 import com.example.jakala_swapi.data.db.entity.MovieDetailEntity
+import com.example.jakala_swapi.data.db.entity.MovieUpdate
 import com.example.jakala_swapi.data.model.MovieDetail
 
 fun MovieDetail.toMovieDetailEntity(): MovieDetailEntity {
@@ -10,6 +11,14 @@ fun MovieDetail.toMovieDetailEntity(): MovieDetailEntity {
         openingCrawl = openingCrawl,
         releaseDate = releaseDate,
         isFavorite = isFavorite
+    )
+}
+
+fun MovieDetail.toMovieUpdate(): MovieUpdate {
+    return MovieUpdate(
+        title = title ?: "No Title",
+        openingCrawl = openingCrawl,
+        releaseDate = releaseDate,
     )
 }
 

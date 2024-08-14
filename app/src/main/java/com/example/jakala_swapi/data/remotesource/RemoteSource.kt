@@ -24,4 +24,19 @@ object RemoteSource {
             println("Error stacktrace:: $httpErr ")
             emit(Result.Error(httpErr))
         }.flowOn(Dispatchers.IO)
+
+    suspend fun <T> launchResult(apiResponse: suspend () -> Response<T>): Result<T> {
+        return try {
+            val response = apiResponse.invoke()
+            if (response.isSuccessful) {
+                Result.Success(response.body()!!)
+            } else {
+                println("Error stacktrace:: ${response.errorBody()} ")
+                Result.Error()
+            }
+        } catch (e: Exception) {
+            println("Error stacktrace:: ${e.stackTrace} ")
+            Result.Error()
+        }
+    }
 }
