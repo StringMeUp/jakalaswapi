@@ -21,9 +21,13 @@ sealed class NavigationItem(
             name = R.string.bottom_nav_movie
         ) {
             data object MovieDetail : NavigationItem(
-                route = "MovieDetail",
+                route = "MovieDetail/{id}/{title}",
                 name = R.string.bottom_nav_movie_detail
-            )
+            ) {
+                fun createMovieDetailRoute(id: String, title: String): String {
+                    return MovieDetail.route.replace("{id}", id).replace("{title}", title)
+                }
+            }
         }
 
         data object People : NavigationItem(

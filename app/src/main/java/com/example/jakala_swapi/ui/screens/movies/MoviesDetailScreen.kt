@@ -23,7 +23,7 @@ import com.example.jakala_swapi.ui.widgets.LoadingItem
 @Composable
 fun MoviesDetailScreen(
     padding: PaddingValues = PaddingValues(),
-    viewModel: MoviesViewModel = hiltViewModel(),
+    viewModel: MovieDetailViewModel = hiltViewModel(),
 ) {
     val state by viewModel.movieDetailState.collectAsStateWithLifecycle()
     Scaffold(modifier = Modifier.padding(padding)) {
@@ -43,6 +43,7 @@ private fun MoviesDetailScreenContent(
         is MovieDetailUiState.SuccessDetail -> {
             DetailItem(
                 modifier = Modifier
+                    .padding(paddingValues)
                     .fillMaxWidth()
                     .padding(top = 24.dp),
                 movieDetail = movieDetailUiState.movie

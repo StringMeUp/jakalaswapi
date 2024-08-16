@@ -36,7 +36,7 @@ import com.example.jakala_swapi.ui.widgets.LoadingItem
 @Composable
 fun MoviesScreen(
     viewModel: MoviesViewModel = hiltViewModel(),
-    navigateToDetail: () -> Unit = {},
+    navigateToDetail: (id: String, title: String) -> Unit = { _, _ -> },
     padding: PaddingValues
 ) {
 
@@ -45,8 +45,7 @@ fun MoviesScreen(
         MoviesScreenContent(
             moviesUiState = moviesUiState,
             padding = it,
-            setMovieIdentifier = { viewModel.movieId = it },
-            navigateToDetail = { navigateToDetail() },
+            navigateToDetail = { id: String, title: String -> navigateToDetail(id, title) },
         )
     }
 }
@@ -55,15 +54,14 @@ fun MoviesScreen(
 private fun MoviesScreenContent(
     moviesUiState: UiState,
     padding: PaddingValues = PaddingValues(),
-    setMovieIdentifier: (identifier: Pair<String, String>) -> Unit = {},
-    navigateToDetail: () -> Unit = {},
+    navigateToDetail: (id: String, title: String) -> Unit = { _, _ -> },
 ) {
 
     when (val state = moviesUiState) {
         UiState.Error -> ErrorItem()
         UiState.Loading -> LoadingItem()
         is MovieUiState.Success -> {
-            LazyColumn {
+            LazyColumn(Modifier.padding(padding)) {
                 item {
                     HeaderItem(
                         modifier = Modifier
@@ -78,8 +76,7 @@ private fun MoviesScreenContent(
                             .padding(8.dp)
                             .shadow(2.dp, RoundedCornerShape(16.dp))
                             .clickable {
-                                setMovieIdentifier((it.url ?: "") to it.title)
-                                navigateToDetail()
+                                navigateToDetail((it.url?.filter { it.isDigit() } ?: ""), it.title)
                             },
                         colors = ListItemDefaults.colors(containerColor = Color.LightGray),
 
